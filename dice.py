@@ -23,10 +23,9 @@ if __name__ == '__main__':
                         help='Number and Type of Dice in the form NdX')
     args = parser.parse_args()
 
-    cnt = int(args.dice.split('d')[0])
-    crit = int(args.dice.split('d')[-1])
+    (cnt, crit) = (args.dice.split('d'))
 
-    rolls = dice(cnt, crit)
+    rolls = dice(int(cnt), int(crit))
 
     print "The roll is {}".format(str(rolls[1:]))
 
