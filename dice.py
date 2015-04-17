@@ -27,7 +27,7 @@ if __name__ == '__main__':
 
     rolls = dice(int(cnt), int(crit))
 
-    print "The roll is {}".format(str(rolls[1:]))
+    print("The roll is {}".format(str(rolls[1:])))
 
     if len(rolls) > 2:
-        print "The total is {}".format(str(rolls[0]))
+        print("The total is {}".format(str(rolls[0])))
