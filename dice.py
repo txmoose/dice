@@ -8,24 +8,24 @@ class Dice:
     def __init__(self):
         pass
 
-    def roll(self, crit):
-        return random.randint(1, crit)
+    def roll(self, critical_roll):
+        return random.randint(1, critical_roll)
 
-    def dice(self, die_list):
-        faces = [0]
-        for x in die_list:
-            (cnt, crit) = x.split('d')
-            (cnt, crit) = (int(cnt), int(crit))
+    def full_hand(self, die_list):
+        total = [0]
+        for die in die_list:
+            (num_dice, critical_roll) = die.split('d')
+            (num_dice, critical_roll) = (int(num_dice), int(critical_roll))
 
-            for y in range(0, cnt):
-                face = self.roll(crit)
-                faces[0] += face
-                faces.append(face)
+            for y in range(0, num_dice):
+                face = self.roll(critical_roll)
+                total[0] += face
+                total.append(face)
 
-        print("The roll is {}".format(faces[1:]))
+        print("The roll is {}".format(total[1:]))
 
-        if len(faces) > 2:
-            print("The total is {}".format(faces[0]))
+        if len(total) > 2:
+            print("The total is {}".format(total[0]))
 
 
 if __name__ == '__main__':
@@ -36,4 +36,4 @@ if __name__ == '__main__':
 
     dice = Dice()
 
-    dice.dice(args.dice)
+    dice.full_hand(args.dice)
