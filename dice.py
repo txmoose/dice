@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import argparse
 import random
 
 
@@ -22,16 +21,3 @@ class dice:
 
         if len(faces) > 2:
             print("The total is {}".format(faces[0]))
-
-
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Simple dice roller')
-    parser.add_argument('dice', type=str,
-                        help='Number and Type of Dice in the form NdX')
-    args = parser.parse_args()
-
-    Dice = dice()
-
-    (cnt, crit) = (args.dice.split('d'))
-
-    Dice.dice(int(cnt), int(crit))
