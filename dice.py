@@ -15,7 +15,11 @@ def dice(cnt, crit):
         faces[0] += face
         faces.append(face)
 
-    return faces
+    print("The roll is {}".format(faces[1:]))
+
+    if len(faces) > 2:
+        print("The total is {}".format(faces[0]))
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simple dice roller')
@@ -25,9 +29,4 @@ if __name__ == '__main__':
 
     (cnt, crit) = (args.dice.split('d'))
 
-    rolls = dice(int(cnt), int(crit))
-
-    print("The roll is {}".format(str(rolls[1:])))
-
-    if len(rolls) > 2:
-        print("The total is {}".format(str(rolls[0])))
+    dice(int(cnt), int(crit))
