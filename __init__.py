@@ -10,8 +10,8 @@ if __name__ == '__main__':
                         help='Number and Type of Dice in the form NdX')
     args = parser.parse_args()
 
-    Dice = dice()
+    dice = Dice()
 
     (cnt, crit) = (args.dice.split('d'))
 
-    Dice.dice(int(cnt), int(crit))
+    dice.dice(int(cnt), int(crit))
