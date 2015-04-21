@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
 import argparse
-from dice import dice
+from dice import Dice
 
 
 if __name__ == '__main__':
