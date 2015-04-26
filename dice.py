@@ -43,7 +43,7 @@ def ensure_input(dice_req):
     if dice_good:
         return dice_good
     else:
-        sys.exit('Input was incorrectly formatted.')
+        sys.exit('All input was improperly formatted.')
 
 
 if __name__ == '__main__':
