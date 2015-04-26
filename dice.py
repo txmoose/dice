@@ -2,6 +2,8 @@
 
 import argparse
 import random
+import sys
+import re
 
 
 class Dice:
@@ -27,6 +29,22 @@ class Dice:
         if len(total) > 2:
             print("{}'s total is {}".format(self.name.capitalize(), total[0]))
 
+def ensure_input(dice_req):
+    dice_good = []
+
+    for die in dice_req:
+        good_format = re.match('\d+d\d+', die)
+
+        if good_format:
+            dice_good.append(die)
+        else:
+            print('{} is improperly formatted.'.format(die))
+
+    if dice_good:
+        return dice_good
+    else:
+        sys.exit('Input was incorrectly formatted.')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simple dice roller')
@@ -38,4 +56,4 @@ if __name__ == '__main__':
 
     dice = Dice(args.name)
 
-    dice.full_hand(args.dice)
+    dice.full_hand(ensure_input(args.dice))
