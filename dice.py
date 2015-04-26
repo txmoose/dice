@@ -2,6 +2,8 @@
 
 import argparse
 import random
+import sys
+import re
 
 
 def roll(critical_roll):
@@ -23,6 +25,22 @@ def full_hand(die_list):
     if len(total) > 2:
         print("The total is {}".format(total[0]))
 
+def ensure_input(dice_req):
+    dice_good = []
+
+    for die in dice_req:
+        good_format = re.match('\d+d\d+', die)
+
+        if good_format:
+            dice_good.append(die)
+        else:
+            print('{} is improperly formatted.'.format(die))
+
+    if dice_good:
+        return dice_good
+    else:
+        sys.exit('All input was improperly formatted.')
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Simple dice roller')
@@ -30,4 +48,4 @@ if __name__ == '__main__':
                         help='Number and Type of Dice in the form NdX')
     args = parser.parse_args()
 
-    full_hand(args.dice)
+    full_hand(ensure_input(args.dice))
